@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Código QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Genera un Código QR!</h1>
+    <input type="text" id="inputText" placeholder="Escribe tu frase o letra aquí" style="width: 300px; padding: 10px;">
+    <button id="generate">Generar QR</button>
+
+    <div id="qrcode"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#generate').click(function() {
+                var text = $('#inputText').val();
+                if (text) {
+                    $('#qrcode').empty();
+                    // Cambia 'tu-sitio-web.com' por el dominio donde tienes el archivo para mostrar la frase
+                    var url = 'https://gweo2.html?text=' + encodeURIComponent(text);
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        text: url,
+                        width: 128,
+                        height: 128,
+                    });
+                } else {
+                    alert("Por favor, ingresa una frase o letra.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

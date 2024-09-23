@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Frase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Frase Generada</h1>
+    <p id="displayText"></p>
+
+    <script>
+        // Obtener la frase de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const text = urlParams.get('text');
+        if (text) {
+            document.getElementById('displayText').innerText = decodeURIComponent(text);
+        } else {
+            document.getElementById('displayText').innerText = "No hay frase para mostrar.";
+        }
+    </script>
+
+</body>
+</html>
